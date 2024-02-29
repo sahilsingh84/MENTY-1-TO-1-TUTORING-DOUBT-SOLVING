@@ -7,9 +7,6 @@ const profileSchema=new mongoose.Schema({
     gender:{
         type:String,
     },
-    image:{
-        type:String,
-    },
     contactNumber:{
         type:String,
         trim:true
