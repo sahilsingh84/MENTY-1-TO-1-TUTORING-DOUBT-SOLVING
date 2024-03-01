@@ -11,8 +11,16 @@ const courseSchema=new mongoose.Schema({
    },
    description:{
     type:"String",
-    trim:true,
+    trim:true, 
     required:true,
+   },
+   whatYouWillLearn:{
+      type:"String",
+      trim:true,
+   },
+   thumbnail:{
+      type:String,
+      trim:true,
    },
    category:{
     type:mongoose.Schema.Types.ObjectId,
@@ -23,4 +31,4 @@ const courseSchema=new mongoose.Schema({
     ref:"Lesson",
    }],
 })
-exports.module=mongoose.model("Course",courseSchema);
+module.exports=mongoose.model("Course",courseSchema);
