@@ -4,7 +4,7 @@ const categorySchema=new mongoose.Schema({
     name:{
         type:String
     },
-    description:{
+    description:{ 
         type:String
     },
     courses:[
@@ -13,5 +13,6 @@ const categorySchema=new mongoose.Schema({
             ref:"Course"
         }
     ]
-})
+});
+module.exports=mongoose.model("Category",categorySchema);
 

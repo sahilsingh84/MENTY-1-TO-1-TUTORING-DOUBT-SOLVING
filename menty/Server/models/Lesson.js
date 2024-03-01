@@ -14,4 +14,4 @@ const lessonSchema=new mongoose.Schema({
     type:String,
    }
 });
-exports.module=mongoose.model("Lesson",lessonSchema);
+module.exports=mongoose.model("Lesson",lessonSchema);
