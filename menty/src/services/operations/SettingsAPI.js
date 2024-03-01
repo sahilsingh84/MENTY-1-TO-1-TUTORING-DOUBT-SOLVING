@@ -4,7 +4,7 @@ import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiconnector"
 import { settingsEndpoints } from "../apis"
 import { logout } from "./authAPI"
-
+import axios from 'axios';
 
 const { UPDATE_DISPLAY_PICTURE_API, UPDATE_PROFILE_API,  CHANGE_PASSWORD_API,  DELETE_PROFILE_API,} = settingsEndpoints
  
@@ -26,7 +26,8 @@ export function updateDisplayPicture(token, formData) {
         throw new Error(response.data.message)
         }
       toast.success("Display Picture Updated Successfully")
-      dispatch(setUser(response.data.data))
+      console.log(response);
+      dispatch(setUser(response?.data.data))
     }
      catch(error) {
       console.log("UPDATE_DISPLAY_PICTURE_API API ERROR............", error)
@@ -47,10 +48,11 @@ export function updateProfile(token, formData) {
       if(!response.data.success) {
         throw new Error(response.data.message)
       }
-      const userImage = response.data.updatedUserDetails.image ? response.data.updatedUserDetails.image : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.updatedUserDetails.firstName} ${response.data.updatedUserDetails.lastName}`
+      console.log(response);
+      const userImage = response.data.user.image ? response.data.user.image : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
     
       dispatch(
-        setUser({ ...response.data.updatedUserDetails, image: userImage })
+        setUser({ ...response.data.user, image: userImage })
       )
       toast.success("Profile Updated Successfully")
     } 
@@ -64,9 +66,15 @@ export function updateProfile(token, formData) {
 
 
 export async function changePassword(token, formData) {
+  console.log(token,formData,CHANGE_PASSWORD_API);
   const toastId = toast.loading("Loading...")
   try {
-    const response = await apiConnector("POST", CHANGE_PASSWORD_API, formData, { Authorization: `Bearer ${token}`, })
+    const response=await axios.post(CHANGE_PASSWORD_API,formData,{
+      headers:{
+        'Authorization':`Bearer ${token}`,
+      }
+    })
+    // const response = await apiConnector("POST", CHANGE_PASSWORD_API, formData, { Authorization: `Bearer ${token}`, })
     console.log("CHANGE_PASSWORD_API API RESPONSE............", response)
 
     if (!response.data.success) {

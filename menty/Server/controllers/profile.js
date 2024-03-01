@@ -97,6 +97,7 @@ async function handelUpdateProfilePicture(req,res){
 async function handelUpdatePassword(req,res){
     try{
         const userId=req.user.id;
+        console.log(userId);
         const {oldPassword,newPassword}=req.body;
         console.log(oldPassword,newPassword);
         const userDb=await User.findById(userId);

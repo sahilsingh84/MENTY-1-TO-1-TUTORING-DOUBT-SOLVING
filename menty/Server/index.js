@@ -18,8 +18,9 @@ const io=new Server(server,{
         credentials:true,
     }
 });
+console.log(process.env.FRONTEND_PORT);
 app.use(cors({
-    origin:`http://localhost:${process.env.FRONTEND_PORT}`,
+    origin:`http://localhost:3000`,
     credentials:true,
 }))
 app.use(express.json());
@@ -27,7 +28,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({extended:false}));
 app.use(fileUpload(
     {useTempFiles:true,
-    tempFileDir:'/tmp/'}
+    tempFileDir:'/tmp/'} 
     ));
 dbConnect();
 cloudinaryConnect();

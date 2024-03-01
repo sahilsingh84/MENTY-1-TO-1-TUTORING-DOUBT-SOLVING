@@ -12,6 +12,7 @@ require("dotenv").config();
 async function handelSendOtp(req,res){
     try{
         const {email}=req.body;
+        console.log(email);
         //validating email where it is in correct regular expression form or not
         const userExist=await User.findOne({email});
         //if user exist than do this

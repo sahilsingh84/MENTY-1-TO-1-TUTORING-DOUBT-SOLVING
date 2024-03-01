@@ -10,7 +10,7 @@ const { GET_USER_DETAILS_API, GET_USER_ENROLLED_COURSES_API, GET_INSTRUCTOR_DATA
 
 
 export function getUserDetails(token, navigate) {
-  return async (dispatch) => {
+  return async (dispatch) => { 
     const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
