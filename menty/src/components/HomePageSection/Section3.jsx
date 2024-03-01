@@ -6,7 +6,7 @@ function Section3(){
     return(
           
             <div className="mx-auto  max-w-maxContent mt-10 customBoxShadow">
-                <h1 className="text-[70px] font-bold font-inter">How does Menty work?</h1>
+                <h1 className="text-[30px] font-bold font-inter">How does Menty work?</h1>
                 <div className="flex flex-col gap-10">
                 <Secction3Card idx={"1"} text1={"Stuck while studying?"} text2={"Everyday unanswered questions become huge backlogs overtime."} img={img1} />
                 <Secction3Card idx={"2"} text1={"Take a photo of your question"} text2={"Feel free to ask about any questions, concepts, or formulas that interest you"} img={img2} />

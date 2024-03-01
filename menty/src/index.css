@@ -2,20 +2,107 @@
 @tailwind components;
 @tailwind utilities;
 
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Satoshi, sans-serif;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
-.app{
-  background-color: #6E6E6E;
+.lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
 }
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 
 .navbar{
   height: 60px;
+  overflow: hidden;
+  background-color: aqua;
 }
 /* Home.css */
 
@@ -25,7 +112,6 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #f7f7f7;
 }
 
 .section1 {
@@ -35,10 +121,12 @@
   justify-content: center;
   padding: 20px;
   margin-bottom: 20px;
-  background-color: #fff;
+  background: rgb(14,64,148);
+  background: linear-gradient(90deg, rgba(14,64,148,1) 0%, rgba(16,73,169,1) 35%, rgba(18,83,191,1) 100%);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width:90%;
+  margin-top: 20px;
 }
 
 .setion1InitialDiv {
@@ -52,25 +140,26 @@
 
 .section1text {
   text-align: left;
+
 }
 .webTitle {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #333;
+  color: white;
   
 }
 
 .webPara {
   font-size: 18px;
-  color: #666;
+  color: rgb(222, 222, 222);
   margin-bottom: 20px;
 }
 
 .webIntroVideo {
   margin-top: 20px;
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
   overflow: hidden;
   border-radius: 10px;
   margin-left: 10px;
@@ -91,9 +180,182 @@
 .introButtons Button {
   margin: 0 10px;
 }
+.commonButton{
+  padding: 5px 15px;
+  background-color: #BAFF39;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in;
+}
+.commonButton:hover{
+  transform: scale(0.95);
+}
+.introButtons{
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  
+}
+
+.section2{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width:90%;
+}
+
+.section2Heading{
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.section2Para{
+  font-size: 20px;
+
+}
+.section2Span{
+  color: rgba(18,83,191,1);
+  margin-bottom: 10px;
+}
+.underline{
+  width:30%;
+  height: 3px;
+  background-color: #EC1D1D;
+  margin-bottom: 20px;
+}
+.highlightingProblemDiv{
+  width:100%;
+  padding: 20px 10px;
+  box-shadow: 0 0 10px #b0b0b0;
+  margin-top: 30px;
+  border-radius: 10px;
+}
+.highlightingProblemHeading{
+  font-size: 24px;
+  font-weight: bold;
+}
+.highlightingProblemCardsSection{
+  display: flex;
+  justify-content: center;
+  gap:50px;
+  padding: 20px 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+
+}
+.problemsCard{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.problemsCardNumber{
+  font-size: 36px;
+  color: #EC1D1D;
+  font-weight: bold;
+}
+.problemsCardProblems{
+  font-size: 20px;
+}
+.addBorder{
+  border-right: 3px solid rgb(165, 164, 164);
+}
+
+.section2AskedPart{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+
+}
+.section2AskedPartFirst{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.askedPartText{
+  color:black;
+  font-size: 24px;
+
+}
+.askedPartSpan{
+  color:rgba(18,83,191,1);
+  font-size: 30px;
+  font-weight: bold;
+}
+.askedPartImage{
+  max-width: 400px;
+  filter: drop-shadow(0 0 10px #333);
+}
+.askedPartDataSection{
+  margin-top: 30px;
+  font-size: 28px;
+}
+.askedPartDataSectionSpan{
+  font-size: 36px;
+  color: #EC1D1D;
+  font-weight: bold;
+}
+.askedPartButton{
+  background-color:#BAFF39;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.askedPartNameSpan{
+  color: #EC1D1D;
+  margin-left: 3px;
+  font-weight: 600;
+}
+.description2{
+  color:rgba(18,83,191,1);
+}
+.formInput{
+  border: 2px 2px solid #999999;
+}
 .customBoxShadow{
   border-radius:10px;
   padding:20px ;
   width:90%;
   box-shadow:0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  margin-top: 10px;
+}
+.subCustomBoxShadow{
+  border-radius:10px;
+  box-shadow:0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding:20px ;
+  margin: 10px 10px 10px 10px;
+
+  /* border: 2px solid #333; */
+
+}
+.tabDiv{
+  display: inline-flex;
+  gap: 0px;
+  padding: 5px 10px;
+  color: black;
+  background-color: #baff3965;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.normalTab{
+  padding: 10px;
+  border-radius: 20px;
+}
+.activeTab {
+  background-color: #BAFF39;
+  font-weight: bold;
+  
 }

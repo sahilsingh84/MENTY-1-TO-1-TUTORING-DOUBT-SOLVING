@@ -8,7 +8,7 @@ const Button = ({text,path}) => {
   }
 
   return (
-    <button onClick={handleOnClick}>
+    <button onClick={handleOnClick} className='commonButton'>
         {text}
     </button>
   )
