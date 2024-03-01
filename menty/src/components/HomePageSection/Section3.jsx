@@ -5,7 +5,7 @@ import img1 from "../../assets/section3img1.jpg";
 function Section3(){
     return(
           
-            <div className="mx-auto w-11/12 max-w-maxContent mt-10">
+            <div className="mx-auto  max-w-maxContent mt-10 customBoxShadow">
                 <h1 className="text-[70px] font-bold font-inter">How does Menty work?</h1>
                 <div className="flex flex-col gap-10">
                 <Secction3Card idx={"1"} text1={"Stuck while studying?"} text2={"Everyday unanswered questions become huge backlogs overtime."} img={img1} />
