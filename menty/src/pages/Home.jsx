@@ -3,6 +3,8 @@ import BannerVideo from '../assets/banner.mp4'
 import Button from '../components/common/Button'
 import { TypeAnimation } from 'react-type-animation'
 import { Fade } from 'react-awesome-reveal'
+import Section2 from '../components/HomePageSection/Section2'
+import Section2AskedPart from '../components/HomePageSection/Section2AskedPart'
 
 
 
@@ -46,8 +48,11 @@ const Home = () => {
         </div>
 
         <div className='section2'>
-            <h1></h1>
-
+            <h1 className='section2Heading'>Do you need Menty?</h1>
+            <div className='underline'></div>
+            <p className='section2Para'><span className='section2Span'>Ever felt lost during a class or online lecture?</span> We surveyed students and uncovered their top responses when struggling to understand</p>
+            <Section2/>
+            <Section2AskedPart/>
         </div>
       
     </div>

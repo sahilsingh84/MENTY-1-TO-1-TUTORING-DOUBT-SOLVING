@@ -30,4 +30,4 @@ const adminSchema=new mongoose.Schema({
     type:String,
    }
 })
-exports.module=mongoose.model("Admin",adminSchema);
+module.exports=mongoose.model("Admin",adminSchema);

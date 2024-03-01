@@ -12,4 +12,5 @@ const ratingAndReviewSchema=new mongoose.Schema({
     review:{
         type:String
     }
-})
+});
+module.exports=mongoose.model("RatingAndReview",ratingAndReviewSchema);

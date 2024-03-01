@@ -33,4 +33,4 @@ const liveStreamSchema=new mongoose.Schema({
     default:Date.now,
    }
 });
-exports.module=mongoose.model("LiveStreaming",liveStreamSchema);
+module.exports=mongoose.model("LiveStreaming",liveStreamSchema);

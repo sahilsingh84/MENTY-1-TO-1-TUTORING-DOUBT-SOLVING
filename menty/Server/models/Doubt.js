@@ -18,5 +18,4 @@ const doubtSchema=new mongoose.Schema({
     }
 
 })
-
-exports.module=mongoose.model("Doubt",doubtSchema);
+module.exports=mongoose.model("Doubt",doubtSchema);
