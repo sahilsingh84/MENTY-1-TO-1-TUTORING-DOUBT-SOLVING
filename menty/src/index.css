@@ -47,7 +47,8 @@ code {
   justify-content: center;
   padding: 20px;
   margin-bottom: 20px;
-  background-color: #fff;
+  background: rgb(14,64,148);
+  background: linear-gradient(90deg, rgba(14,64,148,1) 0%, rgba(16,73,169,1) 35%, rgba(18,83,191,1) 100%);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width:90%;
@@ -64,25 +65,26 @@ code {
 
 .section1text {
   text-align: left;
+
 }
 .webTitle {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #333;
+  color: white;
   
 }
 
 .webPara {
   font-size: 18px;
-  color: #666;
+  color: rgb(222, 222, 222);
   margin-bottom: 20px;
 }
 
 .webIntroVideo {
   margin-top: 20px;
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
   overflow: hidden;
   border-radius: 10px;
   margin-left: 10px;
@@ -102,4 +104,22 @@ code {
 
 .introButtons Button {
   margin: 0 10px;
+}
+.commonButton{
+  padding: 5px 15px;
+  background-color: #BAFF39;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in;
+}
+.commonButton:hover{
+  transform: scale(0.95);
+}
+.introButtons{
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  
 }
