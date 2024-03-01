@@ -18,7 +18,7 @@ const Section2AskedPart = () => {
         </div>
 
         <div className='askedPartButton'>
-            It's clear that there's a need for better solutions to address learning challenges and we created {" "} <span className='askedPartNameSpan'> Menty.</span>
+            It's clear that there's a need for better solutions to address learning challenges and we created {" "} <span className='askedPart'> Menty.</span>
         </div>
 
     </div>

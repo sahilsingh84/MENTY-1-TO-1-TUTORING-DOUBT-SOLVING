@@ -5,6 +5,7 @@ import { TypeAnimation } from 'react-type-animation'
 import { Fade } from 'react-awesome-reveal'
 import Section2 from '../components/HomePageSection/Section2'
 import Section2AskedPart from '../components/HomePageSection/Section2AskedPart'
+import Section3 from '../components/HomePageSection/Section3'
 
 
 
@@ -54,6 +55,7 @@ const Home = () => {
             <Section2/>
             <Section2AskedPart/>
         </div>
+        <Section3/>
       
     </div>
   )
