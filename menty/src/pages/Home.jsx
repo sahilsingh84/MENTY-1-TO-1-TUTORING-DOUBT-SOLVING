@@ -1,7 +1,7 @@
 import React from 'react'
 import BannerVideo from '../assets/banner.mp4'
 import Button from '../components/common/Button'
-
+import Section3 from '../components/HomePageSection/Section3'
 
 const Home = () => {
   return (
@@ -26,7 +26,7 @@ const Home = () => {
                <Button text={"LogIn"} path={"login"}></Button>
             </div>
         </div>
-      
+       <Section3/>
     </div>
   )
 }
