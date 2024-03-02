@@ -5,11 +5,13 @@ const otpGenerator=require('otp-generator');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 require("dotenv").config();
+const {sendNotification}=require("./sendNotification");
 //========================================================send otp
 //function to validate email using regular expression
 
 async function handelSendOtp(req,res){
     try{
+
         const {email}=req.body;
         console.log(email);
         //validating email where it is in correct regular expression form or not

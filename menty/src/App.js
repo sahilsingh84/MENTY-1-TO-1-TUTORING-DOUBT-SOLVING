@@ -19,10 +19,15 @@ import MyProfile from "./components/core/Dashboard/MyProfile"
 import Settings from "./components/core/Dashboard/Settings"
 import PrivateRoute from "./components/core/Auth/PrivateRoute"
 import Dashboard from "./pages/Dashboard"
+import TakingPermission from './components/firebase/TakingPermission'
+import AttendQuestionPage from './pages/AttendQuestionPage'
+
+
 const App = () => {
   return (
     <div className='app'>
       <Navbar/>
+      <TakingPermission/>
       <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/signup" element = { <OpenRoute> <Signup /> </OpenRoute> } />
@@ -31,6 +36,7 @@ const App = () => {
           <Route path="/update-password/:id" element = { <OpenRoute> <UpdatePassword /> </OpenRoute> } />
           <Route path="about" element = {  <About /> } />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/attend-question/:id" element={<AttendQuestionPage/>} />
           {/* <Route path="/contact" element={<Contact />} /> */}
            {/* 
             <Route path="verify-email" element = { <OpenRoute> <VerifyEmail /> </OpenRoute> } />

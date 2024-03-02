@@ -40,7 +40,7 @@ const Home = () => {
                          <Button text={"LogIn"} path={"login"}></Button>
                          </>):
                          (
-                            <div className='welcomeButtonToMenty'>Welcome to MENTY</div>
+                            <div className='welcomeButtonToMenty'>Ask Doubt</div>
                          )
                        
                 }
