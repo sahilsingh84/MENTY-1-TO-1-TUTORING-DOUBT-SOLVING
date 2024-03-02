@@ -3,10 +3,23 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { formattedDate } from "../../../utils/dateFormatter"
 import IconBtn from "../../common/IconBtn"
-
+import { useContext,useMemo,useEffect } from "react"
+import { AppContext } from "../../../Context/AppContextProvider"
+import App from "../../../App"
 export default function MyProfile(){
-
   const { user } = useSelector((state) => state.profile)
+const {socket}=useContext(AppContext);
+  useMemo(()=>{socket.emit("join-room",user._id);
+console.log("room joined",user._id)},[]);
+useEffect(()=>{
+socket.on("askdoubt",(msg)=>{
+  console.log("ask doubt",msg);
+});
+socket.on("instructorreached",(msg)=>{
+  console.log("instructorreached",msg);
+});
+},[])
+  
   const navigate = useNavigate()
  
 

@@ -1,5 +1,4 @@
-import React from 'react'
-import {useEffect} from 'react';
+import React, { useEffect } from 'react'
 import Home from './pages/Home'
 import { Route,Routes } from 'react-router-dom'
 import Navbar from './components/common/Navbar'
@@ -34,6 +33,7 @@ import NotificationPage from './pages/NotificationPage';
 
 
 
+// socket
 const App = () => {
   const {user}=useSelector((state)=>state.profile);
   return (
@@ -62,8 +62,7 @@ const App = () => {
           {/* <Route path="/contact" element={<Contact />} /> */}
 
           {/* =============================== */}
-   {user!==null?(user.role==="Instructor"?(<Route path="/notification" element={<NotificationPage/>} />):(<div></div>)):(<div></div>)}
-
+          <Route path="/notification" element={<NotificationPage/>} />
           <Route element = {<PrivateRoute> <Dashboard /> </PrivateRoute>} >
 
               <Route path="dashboard/my-profile" element={ < MyProfile />} /> 

@@ -1,12 +1,45 @@
-import {useState} from 'react';
+import {useState,useContext,useMemo, useEffect} from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import {toast} from 'react-hot-toast';
+import AppContextProvider, { AppContext } from '../../../Context/AppContextProvider';
+import { useNavigate } from 'react-router';
 function AskDoubt(){
+  const navigate=useNavigate();
+  const {socket}=useContext(AppContext);
     const {token}=useSelector((state)=>state.auth);
+    const {user}=useSelector((state)=>state.profile);
    const [imageFile, setImageFile] = useState(null);
    const [description,setDescription]=useState("");
   const [previewSource, setPreviewSource] = useState(null);
+
+  const {setNotification}=useContext(AppContext);
+  const userId=user._id;
+
+  function navigation(){
+    // navigate("/");
+    // alert("got doubt");
+  }
+
+  
+
+  const [alert,setAlert]=useState(false);
+  // useEffect(()=>{
+  //  console.log(notification);
+  // },[notification]);
+  useMemo(()=>{socket.emit("join-room",user._id);
+console.log("room joined",user._id)},[]);
+useEffect(()=>{
+socket.on("askdoubt",(msg)=>{
+  console.log("ask doubt",msg);
+  setNotification((prev)=>[...prev,msg]);
+  toast.success("All")
+});
+socket.on("instructorreached",(msg)=>{
+  console.log("instructorreached",msg);
+});
+},[])
+
   const handleFileChange = (e) => {
     const file = e.target.files[0]
     if(file){
@@ -21,7 +54,6 @@ function AskDoubt(){
       setPreviewSource(reader.result)
     }
   }
-
   async function submitDoubt(e){
     e.preventDefault();
     const formData=new FormData();
@@ -29,7 +61,7 @@ function AskDoubt(){
     formData.append("description",description);
     console.log(process.env.REACT_APP_BASE_URL);
     const toastId=toast.loading("Loading...");
-    try{
+    try{  
         const response=await axios.post(`${process.env.REACT_APP_BASE_URL}/doubt/create-doubt`,formData,
            { 
             headers:{
