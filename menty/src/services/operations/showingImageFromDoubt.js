@@ -10,6 +10,7 @@ export async function gettingDoubtImage(id,setDoubtDetails){
             body:JSON.stringify({id})
         });
         const result=await response.json();
+    
         if(result.success){
             setDoubtDetails(result.data);
             toast.success("Doubt fetched")

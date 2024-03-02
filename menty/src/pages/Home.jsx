@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BannerVideo from '../assets/banner.mp4'
 import Button from '../components/common/Button'
 import { TypeAnimation } from 'react-type-animation'
@@ -8,10 +8,12 @@ import Section2AskedPart from '../components/HomePageSection/Section2AskedPart'
 import Section3 from '../components/HomePageSection/Section3'
 import Footer from '../components/common/Footer'
 import { useSelector } from 'react-redux'
+import { Navigate, useNavigate } from 'react-router'
 
 const Home = () => {
    const {user}=useSelector((state)=>state.profile)
-   console.log("User", user)
+   console.log("User", user);
+   const navigate=useNavigate();
   return (
     <div className='homePage'>
         <div className='section1'>
@@ -40,7 +42,7 @@ const Home = () => {
                          <Button text={"LogIn"} path={"login"}></Button>
                          </>):
                          (
-                            <div className='welcomeButtonToMenty'>Ask Doubt</div>
+                           (<div className='welcomeButtonToMenty' onClick={()=>{navigate("/askdoubt")}}>Ask Doubt</div>)
                          )
                        
                 }

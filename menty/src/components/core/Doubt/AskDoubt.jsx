@@ -47,20 +47,23 @@ function AskDoubt(){
   }
 
     return(
-        <div className=" mx-auto customBoxShadow min-h-screen bg-gray-500 flex justify-center items-center">
-            <div className='flex flex-col gap-5'> 
+        <div className=" mx-auto  customBoxShadow min-h-screen  flex justify-center items-center">
+            <div className='flex flex-col gap-5 subCustomBoxShadow'> 
                 <p>Ask Your Doubt</p>
                 <form onSubmit={submitDoubt} className='flex flex-col gap-3'>
                     <div className='flex flex-col gap-2'>
-                        <label>Get Image of your Doubt</label>
+                        <label className='font-bold'>Get Image of your Doubt</label>
                         <input type="file" onChange={handleFileChange}></input>
                     </div>
-                    <img src={previewSource} alt="Doubt Image"></img>
+                    {
+                      previewFile?(<img src={previewSource} className='doubtImage'></img>):(<div>Doubt Image</div>)
+                    }
+                    
                     <div className='flex flex-col gap-2'>
                         <label>Description</label>
                         <input className="w-[200px] form-style" type="text" placeholder='Type Description' onChange={(e)=>{setDescription(e.target.value)}}></input>
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" className='commonButton'>Submit</button>
                 </form>
             </div>
         </div>

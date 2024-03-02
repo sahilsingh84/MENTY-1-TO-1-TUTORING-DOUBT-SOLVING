@@ -6,19 +6,22 @@ const AttendQuestionPage = () => {
     const [doubtDetails,setDoubtDetails]=useState(null);
     const params=useParams();
     const navigate=useNavigate();
+    console.log("Params: ",params)
 
     useEffect(()=>{
         gettingDoubtImage(params,setDoubtDetails);
     },[])
 
+    console.log(doubtDetails);
+    console.log("")
   return(
-     <div>
+     <div className='customBoxShadow doubtSection'>
         {
-            doubtDetails?(<div className='spinner'></div>):( <div>
-                <div><img src={doubtDetails.image}></img></div>
-                <div>
-                    <button>Take Question</button>
-                    <button onClick={()=>{navigate("/")}}>Cancel</button>
+            !doubtDetails?(<div className='spinner'></div>):( <div>
+                <div className='doubtImage'><img src={doubtDetails?.file}></img></div>
+                <div className='attendQuestionButtonDiv'>
+                    <button className='takeDoubtButton' onClick={()=>{navigate(`/live-stream/${params.id}`)}}>Take Question</button>
+                    <button onClick={()=>{navigate("/")}} className='cancelDoubtPage'>Cancel</button>
                 </div>
             </div>)
         }

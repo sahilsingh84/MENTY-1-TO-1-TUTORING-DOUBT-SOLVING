@@ -389,13 +389,46 @@
   padding: 10px 20px;
   border-radius: 10px;
   font-weight: bold;
+  cursor: pointer;
 }
 /* form styles */
-.lable-style{
-  
-}
+
 .form-style{
   border-radius:10px;
   padding:10px;
   border:1px solid #333;
+}
+.doubtSection{
+  margin-top: 80px;
+}
+.doubtImage{
+  max-width: 650px;
+  margin: auto;
+  border-radius: 10px;
+}
+.takeDoubtButton{
+  padding: 10px 20px;
+  background-color: #BAFF39;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.cancelDoubtPage{
+  padding: 10px 20px;
+  background-color: #EC1D1D;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.attendQuestionButtonDiv{
+  margin-top: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.zoomCall{
+  margin-top: 80px;
+
+}
+.doubtImage{
+  max-width: 450px;
 }
