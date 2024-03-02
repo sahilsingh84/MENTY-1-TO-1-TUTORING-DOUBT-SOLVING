@@ -4,7 +4,6 @@ const Profile=require("../models/Profile");
 const otpGenerator=require('otp-generator');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
-const { mailSender}=require("../utils/mailSender")
 require("dotenv").config();
 //========================================================send otp
 //function to validate email using regular expression
@@ -116,11 +115,12 @@ async function handelLogin(req,res){
                 message:"All fileds are required",
             })
         }
+        console.log("Login:",email)
         const userExist=await User.findOne({email}).populate("profile").exec();
         if(!userExist){
             return res.status(404).json({
                 success:false,
-                message:"User is not Regustered, First SignUp",
+                message:"User is not Registered, First SignUp",
             })
         }
         console.log(userExist);
@@ -131,7 +131,7 @@ async function handelLogin(req,res){
                 id:userExist._id,
                 role:userExist.role,
             };
-            const token=jwt.sign(payload,process.env.JWT_SECRET_KEY);
+            const token=jwt.sign(payload,process.env.JWT_SECRET_KEY||"menty@123");
             const user=userExist.toObject();
             user.token=token;
             user.password=null;
@@ -160,6 +160,6 @@ async function handelLogin(req,res){
         })
     }
 }
-// ==================change password functionality
+
 
 module.exports={handelSendOtp,handelSignUp,handelLogin};

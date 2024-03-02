@@ -6,10 +6,12 @@ import { Fade } from 'react-awesome-reveal'
 import Section2 from '../components/HomePageSection/Section2'
 import Section2AskedPart from '../components/HomePageSection/Section2AskedPart'
 import Section3 from '../components/HomePageSection/Section3'
-
-
+import Footer from '../components/common/Footer'
+import { useSelector } from 'react-redux'
 
 const Home = () => {
+   const {user}=useSelector((state)=>state.profile)
+   console.log("User", user)
   return (
     <div className='homePage'>
         <div className='section1'>
@@ -31,9 +33,18 @@ const Home = () => {
                 Students have access to educational resources and support services 24/7. This flexibility allows students to learn at their convenience and seek help whenever they need it, promoting continuous learning and improvement.
                 </div>
                 </Fade>
-                <div className='introButtons'>
-               <Button text={"SignUp"} path={"signup"}></Button>
-               <Button text={"LogIn"} path={"login"}></Button>
+                <div className='introButtons'>{
+                    !user?(
+                        <>
+                         <Button text={"SignUp"} path={"signup"}></Button>
+                         <Button text={"LogIn"} path={"login"}></Button>
+                         </>):
+                         (
+                            <div className='welcomeButtonToMenty'>Welcome to MENTY</div>
+                         )
+                       
+                }
+               
             </div>
             </div>
             <div className='webIntroVideo'>
@@ -56,7 +67,7 @@ const Home = () => {
             <Section2AskedPart/>
         </div>
         <Section3/>
-      
+        <Footer />
     </div>
   )
 }

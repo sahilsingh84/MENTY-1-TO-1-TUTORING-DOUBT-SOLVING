@@ -10,7 +10,7 @@ import LearningGrid from "../components/core/AboutPage/LearningGrid"
 import Quote from "../components/core/AboutPage/Quote"
 import StatsComponenet from "../components/core/AboutPage/Stats"
 import HighlightText from "../components/core/HomePage/HighlightText"
-import ReviewSlider from "../components/common/ReviewSlider"
+// import ReviewSlider from "../components/common/ReviewSlider"
 import Footer from "../components/common/Footer"
 
 
@@ -19,34 +19,34 @@ import Footer from "../components/common/Footer"
 const About = () => {
   return (
     
-    <div>
+    <div className="customBoxShadow aboutPage">
 
-      <section className="bg-richblack-700">
-        <div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-center text-white">
+      <section className="subCustomBoxShadow">
+        <div className=" mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-center text-black">
 
             <header className="mx-auto py-20 text-4xl font-semibold lg:w-[70%]">  Driving Innovation in Online Education for a  <HighlightText text={"Brighter Future"} />
-                <p className="mx-auto mt-3 text-center text-base font-medium text-richblack-300 lg:w-[85%]"> Studynotion is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community. </p>             
+                <p className="mx-auto mt-3 text-center text-base font-medium text-richblack-300 lg:w-[85%]"> Menty is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community. </p>             
             </header>
 
-          <div className="sm:h-[70px] lg:h-[150px]"> </div>             {/* define gap between heading and image */}
+          {/* <div className="sm:h-[70px] lg:h-[150px]"> </div>             define gap between heading and image */}
 
-          <div className="absolute bottom-0 left-[50%] grid w-[100%] translate-x-[-50%] translate-y-[30%] grid-cols-3 gap-3 lg:gap-5">
-            <img src={BannerImage1} alt="" />
-            <img src={BannerImage2} alt="" />
-            <img src={BannerImage3} alt="" />
+          <div className=" gap-2 lg:gap-5 p-[10px] flex justify-between">
+            <img src={BannerImage1} alt="" className="aboutSection1Image"/>
+            <img src={BannerImage2} alt="" className="aboutSection1Image"/>
+            <img src={BannerImage3} alt="" className="aboutSection1Image"/>
           </div>
         </div>
       </section>
 
-      <section className="border-b border-richblack-700">
-        <div className="mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-richblack-500">
-          <div className="h-[100px] "></div>         {/* this div used to give the height b/w section_1 and section_2 */}
+      <section className="border-b border-richblack-700 subCustomBoxShadow my-24">
+        <div className="mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-black">
+                {/* this div used to give the height b/w section_1 and section_2 */}
             <Quote />
         </div>
       </section>
 
-      <section>
-        <div className="mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-richblack-500">
+      <section className="subCustomBoxShadow">
+        <div className="mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-richblack-900">
 
           <div className="flex flex-col items-center gap-10 lg:flex-row justify-between">                               {/* Our Founding Story paragraph and image*/}
 
@@ -78,7 +78,7 @@ const About = () => {
 
       <StatsComponenet />                 {/* it shows stats (5k studend , 10+ courses) */}
 
-      <section className="mx-auto mt-20 flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-white">
+      <section className="mx-auto mt-20 flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-black customBoxShadow">
         <LearningGrid />
         <ContactFormSection />
       </section>
@@ -86,7 +86,7 @@ const About = () => {
 
       <div className="relative mx-auto my-20 flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
         <h1 className="text-center text-4xl font-semibold mt-8">  Reviews from other learners  </h1>
-        <ReviewSlider />
+        {/* <ReviewSlider /> */}
       </div>
 
       <Footer />                       {/* <Footer /> */}

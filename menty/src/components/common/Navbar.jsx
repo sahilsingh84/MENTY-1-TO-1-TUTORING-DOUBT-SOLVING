@@ -3,10 +3,10 @@ import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
 import { BsChevronDown } from "react-icons/bs"
 import { useSelector } from "react-redux"
 import { Link, matchPath, useLocation } from "react-router-dom"
-import logo from "../../assets/Logo/Logo-Full-Dark.png"
+import logo from "../../assets/mentyLogo.png"
 import { NavbarLinks } from "../../data/navbar-links"
-// import { apiConnector } from "../../services/apiconnector"
-// import { categories } from "../../services/apis"
+import { apiConnector } from "../../services/apiconnector"
+import { categories } from "../../services/apis"
 import { ACCOUNT_TYPE } from "../../utils/constants"
 import ProfileDropdown from "../core/Auth/ProfileDropDown"
 
@@ -27,7 +27,7 @@ function Navbar() {
     ;(async () => {
       setLoading(true)
       try {
-        const res = await fetch()
+        const res = await apiConnector("GET", categories.CATEGORIES_API)
         setSubLinks(res.data.data)
       } catch(error) {
         console.log("Could not fetch Categories.", error)
@@ -43,12 +43,14 @@ function Navbar() {
 
 
   return (
-
-    <div className = {`flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700 ${location.pathname !== "/" ? "bg-richblack-800" : ""} transition-all duration-200`} >
+   <div className="navbar">
+    <div className = {`flex h-14 items-center justify-center  ${location.pathname !== "/" ? "bg-richblack-800" : ""} transition-all duration-200`} >
          
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
         
-        <Link to="/"> <img src = {logo} alt="Logo" width = {160} height = {32} loading = "lazy" className="overflow-y-hidden"/> </Link>           {/* Logo */}
+
+        <Link to="/"> <img src = {logo} alt="Logo" width = {160} height = {32} loading = "lazy" className="navbarLogo"/> </Link>           {/* Logo */}
+
 
         <nav className="hidden md:block">                                                                    {/* Navigation links */}
           <ul className="flex gap-x-6 text-richblack-25">
@@ -135,7 +137,7 @@ function Navbar() {
        
       </div>
     </div>
-  
+    </div>
 )}
 
 
