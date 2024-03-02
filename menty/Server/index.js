@@ -11,6 +11,7 @@ const {Server}=require('socket.io');
 const authRoute=require("./routes/authRoute");
 const profileRoute=require("./routes/profileRoute");
 const courseRoute=require("./routes/courseRoute");
+const myRoutes=require("./routes/myroutes");
 const fileUpload=require("express-fileupload");
 const io=new Server(server,{
     cors:{
@@ -42,9 +43,11 @@ cloudinaryConnect();
 app.use("/api/v1/auth",authRoute);
 app.use("/api/v1/profile",profileRoute);
 app.use("/api/v1/course",courseRoute);
+app.use("/api/v1/doubt",myRoutes);
 app.get("/",(req,res)=>{
     return res.send("Welcome to my backend Page");
 });
+
 server.listen(process.env.BACKEND_PORT,()=>{
     console.log(`Server is running successfully:${process.env.BACKEND_PORT}`);
 })

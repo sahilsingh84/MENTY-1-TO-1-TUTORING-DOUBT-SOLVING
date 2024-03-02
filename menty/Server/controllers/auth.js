@@ -1,6 +1,8 @@
 const User=require("../models/User");
 const Otp=require("../models/Otp");
 const Profile=require("../models/Profile");
+const Student=require("../models/Student");
+const Instructor=require("../models/Instructor");
 const otpGenerator=require('otp-generator');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
@@ -163,6 +165,70 @@ async function handelLogin(req,res){
         })
     }
 }
+async function handelStudentInfo(req,res){
+    try{
+        const {userId,std,field}=req.body;
+        console.log(userId,std,field);
+        if(!std||!field){
+            return res.status(400).json({
+                success:false,
+                message:"All fileds are required",
+            });
+        }
+        const studentPresent=await Student.findOne({studentId:userId});
+        if(studentPresent){
+            return res.status(400).json({
+                success:false,
+                message:"Student details  already presernt required",
+            });
+        }
+        const response=await Student.create({studentId:userId,std:std,field:field});
+        console.log(response);
+        return res.status(200).json({
+            success:true,
+            message:"Studetn details are creates successfully",
+            response,
+        })
+    }catch(err){
+        console.log("Error in adding student detials",err);
+        return res.status(500).json({
+            success:false,
+            message:err.message,
+        })
+    }
+}
+async function handelInstructorInfo(req,res){
+    console.log("i am arrived there");
+    try{
+        const {userId,subjectSpecification,std}=req.body;
+        console.log(userId,subjectSpecification,std);
+        if(!userId||!subjectSpecification||std.length==0){
+            return res.status(400).json({
+                success:false,
+                message:"All fileds are required",
+            });
+        }
+        const instructorPresent=await Instructor.findOne({instructorId:userId});
+        if(instructorPresent){
+            return res.status(400).json({
+                success:false,
+                message:"Student details  already presernt required",
+            });
+        }
+        const response=await Instructor.create({instructorId:userId,subjectSpecification:subjectSpecification,std:std});
+        console.log(response);
+        return res.status(200).json({
+            success:true,
+            message:"Studetn details are creates successfully",
+            response,
+        })
+    }catch(err){
+        console.log("Error in adding student detials",err);
+        return res.status(500).json({
+            success:false,
+            message:err.message,
+        })
+    }
+}
 
-
-module.exports={handelSendOtp,handelSignUp,handelLogin};
+module.exports={handelSendOtp,handelSignUp,handelLogin,handelStudentInfo,handelInstructorInfo};

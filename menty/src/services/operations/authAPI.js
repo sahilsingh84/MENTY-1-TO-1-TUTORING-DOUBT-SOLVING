@@ -5,7 +5,7 @@ import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiconnector"
 import { endpoints } from "../apis"
 import axios from "axios";
-
+import {setUserId} from "../../slices/authSlice";
 /*
  const response = await apiConnector("POST", LOGIN_API, {
         email,
@@ -16,7 +16,7 @@ import axios from "axios";
  
 */
 
-const {SENDOTP_API,  SIGNUP_API, LOGIN_API, RESETPASSTOKEN_API, RESETPASSWORD_API,} = endpoints
+const {SENDOTP_API,  SIGNUP_API, LOGIN_API, RESETPASSTOKEN_API, RESETPASSWORD_API,STUDENT_INFO,TEACHER_INFO,} = endpoints
    
    
 
@@ -54,8 +54,9 @@ export function signUp(accountType, firstName, lastName, email, password, confir
       if(!response.data.success) {
         throw new Error(response.data.message)
       }
-      toast.success("Signup Successful")
-      navigate("/login")
+      toast.success("Signup Successful");
+      dispatch(setUserId(response.data.user._id));
+      navigate(`/${accountType}-info`);
     }
      catch (error) {
       console.log("SIGNUP API ERROR............", error)
@@ -153,4 +154,43 @@ export function resetPassword(password, confirmPassword, token) {
     }
     dispatch(setLoading(false));
   }
+};
+export function studentInfo(userId,std,field,navigate){
+  const toastId=toast.loading("Loading...");
+    return async (dispatch)=>{
+      try{
+        const response=await axios.post(STUDENT_INFO,{userId,std,field});
+        console.log(response);
+        if(!response?.data.success){
+          throw new Error(response.data.message);
+        }
+        toast.success("Details Set Successfully");
+        navigate("/login");
+      }
+      catch(error) {
+        console.log("Error in setting student details", error);
+        toast.error("Unable to set Details");
+      }
+      toast.dismiss(toastId);
+    }
+}
+export function instructorInfo(userId,subjectSpecification,std,navigate){
+  console.log(userId,subjectSpecification,std);
+  const toastId=toast.loading("Loading...");
+    return async (dispatch)=>{
+      try{
+        const response=await axios.post(TEACHER_INFO,{userId,subjectSpecification,std});
+        console.log(response);
+        if(!response?.data.success){
+          throw new Error(response.data.message);
+        }
+        toast.success("Details Set Successfully");
+        navigate("/login");
+      }
+      catch(error) {
+        console.log("Error in setting Instructor details", error);
+        toast.error("Unable to set Details");
+      }
+      toast.dismiss(toastId);
+    }
 }

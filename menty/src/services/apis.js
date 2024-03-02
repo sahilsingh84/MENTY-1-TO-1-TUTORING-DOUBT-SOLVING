@@ -26,6 +26,8 @@ export const endpoints = {
   LOGIN_API: BASE_URL + "/auth/login",
   RESETPASSTOKEN_API: BASE_URL + "/auth/reset-password-token",
   RESETPASSWORD_API: BASE_URL + "/auth/reset-password",
+  STUDENT_INFO:BASE_URL+"/auth/student-info",
+  TEACHER_INFO:BASE_URL+"/auth/instructor-info",
 }
 
 // PROFILE ENDPOINTS

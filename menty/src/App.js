@@ -19,10 +19,18 @@ import MyProfile from "./components/core/Dashboard/MyProfile"
 import Settings from "./components/core/Dashboard/Settings"
 import PrivateRoute from "./components/core/Auth/PrivateRoute"
 import Dashboard from "./pages/Dashboard"
+<<<<<<< HEAD
 import TakingPermission from './components/firebase/TakingPermission'
 import AttendQuestionPage from './pages/AttendQuestionPage'
 
 
+=======
+//
+import StudentInfo  from './pages/StudentInfo';
+import InstructorInfo from './pages/InstructorInfo'
+//doubt
+import AskDoubt from "./components/core/Doubt/AskDoubt"
+>>>>>>> 3fdff250f8d8e040a8cc47d100c29f2a9b188a76
 const App = () => {
   return (
     <div className='app'>
@@ -30,6 +38,8 @@ const App = () => {
       <TakingPermission/>
       <Routes>
           <Route path="/" element={<Home/>} />
+          <Route path="/Student-info" element={<StudentInfo/>} />
+          <Route path="/Instructor-info" element={<InstructorInfo/>}></Route>
           <Route path="/signup" element = { <OpenRoute> <Signup /> </OpenRoute> } />
           <Route path="/login" element = { <OpenRoute> <Login /> </OpenRoute> } />
           <Route path="/forgot-password" element = { <OpenRoute> <ForgotPassword /> </OpenRoute> } />
@@ -64,6 +74,7 @@ const App = () => {
                                   )
                     } */}
           </Route>
+          <Route path="/askdoubt" element={<AskDoubt></AskDoubt>}></Route>
       </Routes>
     </div>
   )
