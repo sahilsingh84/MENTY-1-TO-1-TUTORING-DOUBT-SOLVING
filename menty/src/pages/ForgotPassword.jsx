@@ -20,12 +20,12 @@ function ForgotPassword(){
 
 
   return (
-
+ <div className="subCustomBoxShadow">
     <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
 
       { loading ? ( <div className="spinner"></div> ) : (
     
-              <div className="max-w-[500px] p-4 lg:p-8">
+              <div className="max-w-[500px] p-4 lg:p-8 subCustomBoxShadow">
 
                 <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5"> {!emailSent ? "Reset your password" : "Check email"} </h1>
                 
@@ -38,15 +38,15 @@ function ForgotPassword(){
                   {!emailSent && (
                       <label className="w-full">
                         <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5"> Email Address <sup className="text-pink-200">*</sup> </p>
-                        <input required type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email address" className="form-style w-full"  />
+                        <input required type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email address" className="form-style w-full border-2 border-[#999999] p-2 rounded-md"  />
                       </label>
                   )}
 
-                  <button type="submit" className="mt-6 w-full rounded-[8px] bg-yellow-50 py-[12px] px-[12px] font-medium text-richblack-900"  > {!emailSent ? "Sumbit" : "Resend Email"}  </button>
+                  <button type="submit" className="mt-6 w-full rounded-[8px] bg-[#BAFF39] py-[12px] px-[12px] font-bold text-[rgb(14,64,148)]"  > {!emailSent ? "Sumbit" : "Resend Email"}  </button>
         
                 </form>
 
-                <div className="mt-6 flex items-center justify-between">
+                <div className="mt-6 flex items-center justify-between ">
                   <Link to = "/login">
                      <p className="flex items-center gap-x-2 text-richblack-5"> <BiArrowBack /> Back To Login </p>
                   </Link>
@@ -58,7 +58,7 @@ function ForgotPassword(){
 
     </div>
  
- 
+    </div>
 )}
 
 

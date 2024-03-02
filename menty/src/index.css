@@ -102,7 +102,13 @@
 .navbar{
   height: 60px;
   overflow: hidden;
-  background-color: aqua;
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  box-shadow: 0 0 10px #333;
 }
 /* Home.css */
 
@@ -112,6 +118,10 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  margin-top: 70px;
+}
+.navbarLogo{
+  max-width: 60px;
 }
 
 .section1 {
@@ -325,16 +335,15 @@
   border-radius:10px;
   padding:20px ;
   width:90%;
-  box-shadow:0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow:0 0 10px rgba(0, 0, 0, 0.265);
   margin: auto;
   margin-top: 10px;
 }
 .subCustomBoxShadow{
   border-radius:10px;
-  box-shadow:0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow:0px 0px 10px rgba(0, 0, 0, 0.473);
   padding:20px ;
   margin: 10px 10px 10px 10px;
-
   /* border: 2px solid #333; */
 
 }
@@ -358,4 +367,25 @@
   background-color: #BAFF39;
   font-weight: bold;
   
+}
+.aboutPage{
+  color: black;
+  margin-top: 100px;
+}
+.aboutPageFirstSection{
+  min-height: 600px;
+  
+}
+.aboutSection1Image{
+  max-width: 350px;
+}
+.aboutSection1Image3{
+  max-width: 350px;
+  margin-right: 100px;
+}
+.welcomeButtonToMenty{
+  background-color: #BAFF39;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
 }
