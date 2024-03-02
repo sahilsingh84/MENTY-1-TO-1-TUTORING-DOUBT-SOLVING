@@ -10,8 +10,6 @@ import { categories } from "../../services/apis"
 import { ACCOUNT_TYPE } from "../../utils/constants"
 import ProfileDropdown from "../core/Auth/ProfileDropDown"
 
-
-
 function Navbar() {
 
   const { token } = useSelector((state) => state.auth)                    //fetch token from auth reducer using useSelector hook;

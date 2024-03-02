@@ -6,10 +6,10 @@ const {handelContactUs}=require("../controllers/contactUs");
 profileRoute.delete("/deleteProfile",isAuth,handelDeleteAccount);//check
 profileRoute.put("/updateProfile",isAuth,handelUpdateProfileInfo);//check
 profileRoute.put("/updateProfilePicture",isAuth,handelUpdateProfilePicture);//check
-profileRoute.put("/updatePassword",isAuth,handelUpdatePassword);
+profileRoute.post("/changepassword",isAuth,handelUpdatePassword);
 //--------
 profileRoute.get("/getUserDetails",isAuth,getAllUserDetails);//check
 profileRoute.get("/instructorDashboard", isAuth,isInstructor,instructorDashboard);
 //contact us
-profileRoute.post("/contactUs",handelContactUs);
+profileRoute.post("/contactUs",handelContactUs); 
 module.exports=profileRoute;

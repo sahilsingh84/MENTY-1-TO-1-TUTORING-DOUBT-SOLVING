@@ -1,4 +1,4 @@
-const BASE_URL = process.env.REACT_APP_BASE_URL
+const BASE_URL ="http://localhost:4000/api/v1"
 
 /*
  apis is used to connect backend and frontend 
@@ -20,7 +20,7 @@ So base url is :-  http://localhost:4000/api/v1 + "/reach/contact",  is API whic
 
 
 // AUTH ENDPOINTS
-export const endpoints = {
+export const endpoints = { 
   SENDOTP_API: BASE_URL + "/auth/sendotp",
   SIGNUP_API: BASE_URL + "/auth/signup",
   LOGIN_API: BASE_URL + "/auth/login",
@@ -84,8 +84,8 @@ export const contactusEndpoint = {
 
 // SETTINGS PAGE API
 export const settingsEndpoints = {
-  UPDATE_DISPLAY_PICTURE_API: BASE_URL + "/profile/updateDisplayPicture",
+  UPDATE_DISPLAY_PICTURE_API: BASE_URL + "/profile/updateProfilePicture",
   UPDATE_PROFILE_API: BASE_URL + "/profile/updateProfile",
-  CHANGE_PASSWORD_API: BASE_URL + "/auth/changepassword",
+  CHANGE_PASSWORD_API: BASE_URL + "/profile/changepassword",
   DELETE_PROFILE_API: BASE_URL + "/profile/deleteProfile",
 }

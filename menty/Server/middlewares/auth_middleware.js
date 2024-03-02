@@ -3,7 +3,8 @@ require("dotenv").config();
 //check for authentication
 async function isAuth(req,res,next){
     try{
-        const token=req.cookies.token||req.body.token||req.headers?.authorization.replace("Bearer ","");
+        console.log(req);
+        const token=req.cookies.token||req.body.token||req.header("Authorization").replace("Bearer ","");
         if(!token){
             return res.status(400).json({
                 success:false,

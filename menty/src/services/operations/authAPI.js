@@ -4,7 +4,7 @@ import { resetCart } from "../../slices/cartSlice"
 import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiconnector"
 import { endpoints } from "../apis"
-
+import axios from "axios";
 
 /*
  const response = await apiConnector("POST", LOGIN_API, {
@@ -25,9 +25,8 @@ export function sendOtp(email, navigate) {
     const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
-      const response = await apiConnector("POST", SENDOTP_API, {email, checkUserPresent: true,})
-      console.log("SENDOTP API RESPONSE............", response)
-    
+     const response=await axios.post(SENDOTP_API,{email});
+      console.log(response);
       if(!response.data.success) {
         throw new Error(response.data.message)
       }
@@ -49,8 +48,8 @@ export function signUp(accountType, firstName, lastName, email, password, confir
     const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
-      const response = await apiConnector("POST", SIGNUP_API, {accountType, firstName,  lastName,  email,  password,  confirmPassword,  otp, })
-      console.log("SIGNUP API RESPONSE............", response)
+      const response=await axios.post(SIGNUP_API,{role:accountType, firstName,  lastName,  email, password,otp, })
+      console.log("SIGNUP API RESPONSE............", response);
 
       if(!response.data.success) {
         throw new Error(response.data.message)

@@ -14,9 +14,9 @@ function VerifyEmail() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
-  useEffect(() => {                // Only allow access of this route when user has filled the signup form
-     if(!signupData) navigate("/signup");
-  }, []);
+  // useEffect(() => {                // Only allow access of this route when user has filled the signup form
+  //    if(!signupData) navigate("/signup");
+  // }, []);
 
   const handleVerifyAndSignup = (e) => {
     e.preventDefault();
@@ -33,20 +33,20 @@ function VerifyEmail() {
     <div className="min-h-[calc(100vh-3.5rem)] grid place-items-center">
       { loading ? ( <div className="spinner"></div> ) : (
        
-            <div className="max-w-[500px] p-4 lg:p-8">
+            <div className="max-w-[500px] p-4 lg:p-8 subCustomBoxShadow">
 
               <h1 className="text-richblack-5 font-semibold text-[1.875rem] leading-[2.375rem]"> Verify Email </h1>
               <p className="text-[1.125rem] leading-[1.625rem] my-4 text-richblack-100"> A verification code has been sent to you. Enter the code below </p>
                 
               <form onSubmit={handleVerifyAndSignup}>
 
-                <OtpInput value={otp} onChange={setOtp} numInputs={6}                      // this otp box conatiner is copied from internet  
+                <OtpInput value={otp} onChange={setOtp} numInputs={4}                      // this otp box conatiner is copied from internet  
                   renderInput = {(props) => (
-                    <input {...props}  placeholder="-"  style={{boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",}}  className="w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50"  />
+                    <input {...props}  placeholder="-"    className="w-[48px] lg:w-[60px] bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50 border-2 border-[#333]"  />
                         )}
                   containerStyle = {{ justifyContent: "space-between", gap: "0 6px", }} 
                 />
-                <button type="submit" className="w-full bg-yellow-50 py-[12px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900"> Verify Email </button>
+                <button type="submit" className="w-full bg-[#BAFF39] py-[12px] px-[12px] rounded-[8px] mt-6 font-bold text-richblack-900"> Verify Email </button>
                 
               </form>
 
@@ -54,7 +54,7 @@ function VerifyEmail() {
                 <Link to="/signup">
                   <p className="text-richblack-5 flex items-center gap-x-2"> <BiArrowBack /> Back To Signup </p>
                 </Link>
-                <button className="flex items-center text-blue-100 gap-x-2" onClick={() => dispatch(sendOtp(signupData.email , navigate))}> <RxCountdownTimer /> Resend it </button>          
+                <button className="flex items-center text-blue-500 gap-x-2" onClick={() => dispatch(sendOtp(signupData.email , navigate))}> <RxCountdownTimer /> Resend it </button>          
               </div>
 
             </div>
