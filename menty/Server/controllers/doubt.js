@@ -1,5 +1,8 @@
 const {uploadImageToCloudinary}=require("../utils/imageUploader");
 const Doubt=require("../models/Doubt");
+const Student=require("../models/Student");
+const Instructor=require("../models/Instructor");
+const mongoose=require('mongoose');
 async function handelAskDoubt(req,res){
     try{ 
         const userId=req.user.id;
@@ -16,10 +19,41 @@ async function handelAskDoubt(req,res){
         const imageLink=cloudinaryResponse.secure_url;
         const responseDb=await Doubt.create({userId:userId,file:imageLink,description:description});
         console.log(responseDb);
+        //fetching user details
+        console.log(userId);
+        const id=new mongoose.Types.ObjectId(userId);
+        console.log(id);
+        const studentDb=await Student.findOne({ studentId:id});
+        console.log(studentDb);
+        const std=studentDb.std;
+        console.log(std);
+        //fetching all teachers
+        const instructorDb=await Instructor.find({std:{$elemMatch:{$eq:`${std}`}}});
+        console.log(instructorDb);
+        const iIdArray=[];
+        instructorDb.forEach((element)=>{
+            iIdArray.push(element._id.toString());
+        })
+
+
+// ===========================================
+const chat={
+doubtID:responseDb._id,
+}
+
+iIdArray.forEach((id)=>{
+    io.to(id).emit("doubtasked", chat);
+})
+
+
+// ============================================
+
+        console.log(iIdArray);
         return res.status(200).json({
             success:true,
             message:"Dobut created successfully",
             responseDb,
+            instructorDb,
         })
     }catch(err){
         console.log("Error in creating doubt",err);

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Home from './pages/Home'
 import { Route,Routes } from 'react-router-dom'
 import Navbar from './components/common/Navbar'
@@ -24,6 +24,7 @@ import StudentInfo  from './pages/StudentInfo';
 import InstructorInfo from './pages/InstructorInfo'
 //doubt
 import AskDoubt from "./components/core/Doubt/AskDoubt"
+// socket
 const App = () => {
   return (
     <div className='app'>

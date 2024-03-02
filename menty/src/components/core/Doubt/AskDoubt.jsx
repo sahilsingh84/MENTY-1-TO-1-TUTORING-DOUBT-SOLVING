@@ -1,12 +1,18 @@
-import {useState} from 'react';
+import {useState,useContext,useMemo} from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import {toast} from 'react-hot-toast';
+import { AppContext } from '../../../Context/AppContextProvider';
 function AskDoubt(){
+  const {socket}=useContext(AppContext);
     const {token}=useSelector((state)=>state.auth);
+    const {user}=useSelector((state)=>state.profile);
    const [imageFile, setImageFile] = useState(null);
    const [description,setDescription]=useState("");
   const [previewSource, setPreviewSource] = useState(null);
+  const userId=user._id;
+  useMemo(()=>{socket.emit("join-room",userId);},[]);
+
   const handleFileChange = (e) => {
     const file = e.target.files[0]
     if(file){
@@ -21,7 +27,6 @@ function AskDoubt(){
       setPreviewSource(reader.result)
     }
   }
-
   async function submitDoubt(e){
     e.preventDefault();
     const formData=new FormData();
@@ -29,7 +34,7 @@ function AskDoubt(){
     formData.append("description",description);
     console.log(process.env.REACT_APP_BASE_URL);
     const toastId=toast.loading("Loading...");
-    try{
+    try{  
         const response=await axios.post(`${process.env.REACT_APP_BASE_URL}/doubt/create-doubt`,formData,
            { 
             headers:{
