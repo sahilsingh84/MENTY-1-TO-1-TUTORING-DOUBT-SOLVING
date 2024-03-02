@@ -1,6 +1,4 @@
 const mongoose=require("mongoose");
-
-
 const instructorSchema=new mongoose.Schema({
     instructorId:{
         type:mongoose.Schema.Types.ObjectId,
@@ -29,7 +27,7 @@ const instructorSchema=new mongoose.Schema({
         {
             type:mongoose.Schema.Types.ObjectId,
             ref:"Student"
-        }
+        } 
     ]
 })
 

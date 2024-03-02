@@ -19,12 +19,19 @@ import MyProfile from "./components/core/Dashboard/MyProfile"
 import Settings from "./components/core/Dashboard/Settings"
 import PrivateRoute from "./components/core/Auth/PrivateRoute"
 import Dashboard from "./pages/Dashboard"
+//
+import StudentInfo  from './pages/StudentInfo';
+import InstructorInfo from './pages/InstructorInfo'
+//doubt
+import AskDoubt from "./components/core/Doubt/AskDoubt"
 const App = () => {
   return (
     <div className='app'>
       <Navbar/>
       <Routes>
           <Route path="/" element={<Home/>} />
+          <Route path="/Student-info" element={<StudentInfo/>} />
+          <Route path="/Instructor-info" element={<InstructorInfo/>}></Route>
           <Route path="/signup" element = { <OpenRoute> <Signup /> </OpenRoute> } />
           <Route path="/login" element = { <OpenRoute> <Login /> </OpenRoute> } />
           <Route path="/forgot-password" element = { <OpenRoute> <ForgotPassword /> </OpenRoute> } />
@@ -58,6 +65,7 @@ const App = () => {
                                   )
                     } */}
           </Route>
+          <Route path="/askdoubt" element={<AskDoubt></AskDoubt>}></Route>
       </Routes>
     </div>
   )

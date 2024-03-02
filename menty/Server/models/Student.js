@@ -7,7 +7,7 @@ const studentSchema=new mongoose.Schema({
     },
     std:{
         type:String,
-        required:true
+        required:true 
     },
     field:{
         type:String,
