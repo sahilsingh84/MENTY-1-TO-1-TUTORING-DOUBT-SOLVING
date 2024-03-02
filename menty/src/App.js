@@ -1,4 +1,5 @@
 import React from 'react'
+import {useEffect} from 'react';
 import Home from './pages/Home'
 import { Route,Routes } from 'react-router-dom'
 import Navbar from './components/common/Navbar'
@@ -19,23 +20,17 @@ import MyProfile from "./components/core/Dashboard/MyProfile"
 import Settings from "./components/core/Dashboard/Settings"
 import PrivateRoute from "./components/core/Auth/PrivateRoute"
 import Dashboard from "./pages/Dashboard"
-<<<<<<< HEAD
-import TakingPermission from './components/firebase/TakingPermission'
 import AttendQuestionPage from './pages/AttendQuestionPage'
 
-
-=======
 //
 import StudentInfo  from './pages/StudentInfo';
 import InstructorInfo from './pages/InstructorInfo'
 //doubt
 import AskDoubt from "./components/core/Doubt/AskDoubt"
->>>>>>> 3fdff250f8d8e040a8cc47d100c29f2a9b188a76
 const App = () => {
   return (
     <div className='app'>
       <Navbar/>
-      <TakingPermission/>
       <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/Student-info" element={<StudentInfo/>} />
