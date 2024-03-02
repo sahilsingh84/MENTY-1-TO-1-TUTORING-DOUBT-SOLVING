@@ -27,8 +27,6 @@ app.use(cors({
 
 
 // ====================
-const {sendNotification}=require('./controllers/sendNotification')
-app.get('/notify',sendNotification);
 
 // ============
 app.use(express.json());

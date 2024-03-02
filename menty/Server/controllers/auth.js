@@ -7,7 +7,6 @@ const otpGenerator=require('otp-generator');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 require("dotenv").config();
-const {sendNotification}=require("./sendNotification");
 //========================================================send otp
 //function to validate email using regular expression
 
