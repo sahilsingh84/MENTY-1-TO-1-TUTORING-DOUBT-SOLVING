@@ -12,6 +12,8 @@ function AskDoubt(){
    const [imageFile, setImageFile] = useState(null);
    const [description,setDescription]=useState("");
   const [previewSource, setPreviewSource] = useState(null);
+  const [navigateId,setNavigateId]=useState("");
+  
 
   const {setNotification}=useContext(AppContext);
   const userId=user._id;
@@ -27,7 +29,7 @@ function AskDoubt(){
   // useEffect(()=>{
   //  console.log(notification);
   // },[notification]);
-  useMemo(()=>{socket.emit("join-room",user._id);
+useMemo(()=>{socket.emit("join-room",user._id);
 console.log("room joined",user._id)},[]);
 useEffect(()=>{
 socket.on("askdoubt",(msg)=>{
@@ -35,10 +37,28 @@ socket.on("askdoubt",(msg)=>{
   setNotification((prev)=>[...prev,msg]);
   toast.success("All")
 });
-socket.on("instructorreached",(msg)=>{
-  console.log("instructorreached",msg);
+
+socket.on("hello",(msg)=>{
+  console.log("instructorreached",msg.url);
+  setNavigateId(msg.url);
+  
 });
+// socket.on("solvingDoubt",(msg)=>{
+//   console.log("solvingDoubt",msg);
+// });
+
+
+
+
 },[])
+
+useEffect(()=>{
+   if(navigateId){
+    navigate(`/live-stream/${navigateId}`)
+   }
+},[navigateId])
+
+
 
   const handleFileChange = (e) => {
     const file = e.target.files[0]

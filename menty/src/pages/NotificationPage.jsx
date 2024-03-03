@@ -1,40 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import React, { useState, useEffect, useContext,useMemo } from 'react';
+import { useNavigate} from 'react-router';
+import { AppContext } from '../Context/AppContextProvider';
+import {toast} from 'react-hot-toast';
+import { useSelector } from 'react-redux';
+
 
 const NotificationPage = () => {
-    const [notifications, setNotifications] = useState([]);
+    
+    const {notification,setNotification,socket,currentDoubt,setCurrentDoubt}=useContext(AppContext);
+    const {user}=useSelector((state)=>state.profile);
+
+    useMemo(()=>{socket.emit("join-room",user._id);
+    console.log("room joined",user._id)},[]);
+   useEffect(()=>{
+   socket.on("askdoubt",(msg)=>{
+     console.log("ask doubt",msg);
+     setNotification((prev)=>[...prev,msg]);
+   toast.success("All")
+});
+socket.on("instructorreached",(msg)=>{
+  console.log("instructorreached",msg);
+});
+},[])
+    
     const navigate=useNavigate();
-    useEffect(() => {
-        const fetchNotifications = async () => {
-            try {
-                const response = await fetch('http://localhost:4000/api/v1/notification');
-                const data = await response.json();
-                setNotifications(data.notifications);
-            } catch (error) {
-                console.error('Error fetching notifications:', error);
-            }
-        };
 
-        const intervalId = setInterval(fetchNotifications, 10000);
+    function clickHandler(notify){
 
-        return () => clearInterval(intervalId);
-    }, []);
-
-
-    function clickHandler(){
-        const link=`http://localhost:3000/attend-question/${notifications.message}`
+        console.log("notify.studentId",notify)
+        setCurrentDoubt(notify)
+        const link=`/attend-question/${notify.doubtID}`;
         navigate(link);
     }
-    
+
+
 
     return (
-        <div>
-            <h1>Notifications</h1>
-            <ul>
-                {notifications.map(notification => (
-                    <li key={notification._id} onClick={()=>{clickHandler()}}>{notification.message}</li>
-                ))}
-            </ul>
+        <div className='notification customBoxShadow'>
+            <h1 className='notificationHeading' >Notifications</h1>
+            <div className='subCustomBoxShadow'>
+            {
+                notification.length===0?(<div>No notifications to display</div>):(<ul>
+                    {notification.map((notify,index) => (
+                        <li key={index} onClick={()=>{clickHandler(notify)}}>A notification from MENTY</li>
+                    ))}
+                </ul>)
+            }
+            </div>
         </div>
     );
 }

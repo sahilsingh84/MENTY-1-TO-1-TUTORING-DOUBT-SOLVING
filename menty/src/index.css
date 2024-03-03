@@ -432,3 +432,15 @@
 .doubtImage{
   max-width: 450px;
 }
+.notification{
+  margin-top: 70px;
+  margin-bottom: 20px;
+}
+.notificationHeading{
+  font-size: 30px;
+  color: rgba(18,83,191,1);
+}
+.canvaDiv{
+  width:500px;
+  height: 500px;
+}

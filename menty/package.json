@@ -29,6 +29,7 @@
     "react-scripts": "5.0.1",
     "react-spinner": "^0.2.7",
     "react-type-animation": "^3.2.0",
+    "react-whiteboard-pdf": "^1.2.14",
     "redux": "^5.0.1",
     "socket.io-client": "^4.7.4",
     "tailwind-merge": "^2.2.1",

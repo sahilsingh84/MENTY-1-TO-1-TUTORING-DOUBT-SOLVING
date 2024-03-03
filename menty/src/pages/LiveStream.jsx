@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { AppContext } from '../Context/AppContextProvider'
 
 
 const LiveStream = () => {
     const {user}=useSelector((state)=>state.profile);
-
+   const {socket,currentDoubt}=useContext(AppContext);
     const navigate=useNavigate();
     const {id}=useParams();
+
+  useEffect(()=>{
+    const data={
+      studentId:currentDoubt?.studentId,
+      roomId:id
+    }
+    console.log(data);
+    console.log(currentDoubt);
+socket.emit("videogenerated",data);
+console.log("notification send to student ")
+  },[]);
     const myMeeting=async (element)=>{
         const appId=1172215896;
         const serverSecret="d6648538db2eaaedfd3e4bbaa438b083";
@@ -28,14 +40,9 @@ const LiveStream = () => {
             },
             showRoomTimer:true,
             onLeaveRoom:()=>{navigate("/")},
-            whiteboardConfig: {
-              showAddImageButton: true, // It's set to false by default. To use this feature, activate the File Sharing feature, and then import the plugin. Otherwise, this prompt will occur: "Failed to add image, this feature is not supported."
-              showCreateAndCloseButton: true // Whether to display the button that is used to create/turn off the whiteboard. Displayed by default.
-            },
             screenSharingConfig: {
-              width: 1200,
-              height: 800,
-    
+              width: 200,
+              height: 200,
             } 
 
         })

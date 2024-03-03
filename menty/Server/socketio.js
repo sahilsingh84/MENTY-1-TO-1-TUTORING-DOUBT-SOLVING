@@ -48,6 +48,12 @@ function initSocket(server) {
 
             io.to(room).emit("message", chat);
         });
+        socket.on("videogenerated",(msg)=>{
+            console.log("videogenerated",msg)
+            
+            io.to(msg.studentId).emit("hello",{url:msg.roomId})
+        })
+        
 
         socket.on('disconnect', () => {
             console.log("socket id disconnected", socket.id);

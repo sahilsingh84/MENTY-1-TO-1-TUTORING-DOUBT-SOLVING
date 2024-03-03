@@ -8,7 +8,7 @@ function AppContextProvider({children}) {
   const [notification,setNotification]=useState([])
   const {user}=useSelector((state)=>state.profile)
   const url=process.env.REACT_APP_BACKEND_URL||"http://localhost:4000/";
-
+const [currentDoubt,setCurrentDoubt]=useState()
       const socket=useMemo(()=>io(url),[]);
       // useMemo(()=>{socket.emit("join-room",user._id);
       // console.log("room joined",user._id)},[]);
@@ -18,7 +18,9 @@ function AppContextProvider({children}) {
       const value={
             socket,
             notification,
-            setNotification
+            setNotification,
+            currentDoubt,
+            setCurrentDoubt
         }
 
       return (

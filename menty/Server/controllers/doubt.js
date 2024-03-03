@@ -43,6 +43,7 @@ async function handelAskDoubt(req,res){
 // ===========================================
 const chat={
 doubtID:responseDb._id,
+studentId:studentDb.studentId   
 }
 
 

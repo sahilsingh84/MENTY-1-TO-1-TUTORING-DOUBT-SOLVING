@@ -42,7 +42,7 @@ function Navbar() {
 
   return (
    <div className="navbar">
-    <div className = {`flex h-14 items-center justify-center  ${location.pathname !== "/" ? "bg-richblack-800" : ""} transition-all duration-200`} >
+    <div className = {`flex h-14 items-center justify-center overflow-hidden  ${location.pathname !== "/" ? "bg-richblack-800" : ""} transition-all duration-200`} >
          
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
         
@@ -59,7 +59,7 @@ function Navbar() {
                       { link.title === "Catalog" ? (
 
                                  <>
-                                    <div className={`group relative flex cursor-pointer items-center gap-1 ${matchRoute("/catalog/:catalogName") ? "text-yellow-25" : "text-richblack-25" }`} >
+                                    <div className={`group flex cursor-pointer items-center gap-1 ${matchRoute("/catalog/:catalogName") ? "text-yellow-25" : "text-richblack-25" }`} >
                                         <p> {link.title} </p>  <BsChevronDown />                                   {/*   "Catalog \/"   */}     
                                         
                                         <div className="invisible absolute left-[50%] top-[50%] z-[1000] flex w-[200px] translate-x-[-50%] translate-y-[3em] flex-col rounded-lg bg-richblack-5 p-4 text-richblack-900 opacity-0 transition-all duration-150 group-hover:visible group-hover:translate-y-[1.65em] group-hover:opacity-100 lg:w-[300px]">
@@ -103,7 +103,6 @@ function Navbar() {
 
             { user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (                  // if user is present(login) and user is not instructor then we show cart icon in place of login and signup;
                         <Link to = "/dashboard/cart" className="relative">
-                          <AiOutlineShoppingCart className="text-2xl text-richblack-100" />          {/* icon of cart */}
                           { totalItems > 0 && ( <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
                                                      {totalItems}                                      {/* no of item(courses) present in cart , we take it absolute because we want to overlap it over cart icon */}
                                                  </span>

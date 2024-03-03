@@ -35,19 +35,24 @@ const Home = () => {
                 Students have access to educational resources and support services 24/7. This flexibility allows students to learn at their convenience and seek help whenever they need it, promoting continuous learning and improvement.
                 </div>
                 </Fade>
-                <div className='introButtons'>{
-                    !user?(
-                        <>
-                         <Button text={"SignUp"} path={"signup"}></Button>
-                         <Button text={"LogIn"} path={"login"}></Button>
-                         </>):
-                         (
-                           (<div className='welcomeButtonToMenty' onClick={()=>{navigate("/askdoubt")}}>Ask Doubt</div>)
-                         )
-                       
-                }
-               
-            </div>
+                <div className='introButtons'>
+ {!user ? (
+    <>
+      <Button text={"SignUp"} path={"signup"}></Button>
+      <Button text={"LogIn"} path={"login"}></Button>
+    </>
+  ) : (
+    <>
+      {user.role === "Instructor" && (
+        <div className='welcomeButtonToMenty' onClick={()=>{navigate("/notification")}}>Notification</div>
+      )}
+      {user.role==="Student" && (
+        <div className='welcomeButtonToMenty' onClick={()=>{navigate("/askdoubt")}}>Ask Doubt</div>
+      )}
+    </>
+  )}
+</div>
+
             </div>
             <div className='webIntroVideo'>
             <video muted loop autoPlay>
