@@ -90,8 +90,10 @@ function Navbar() {
 
                   ))
               }
-
+              {user?.role==="Student" && <Link to="/chat-section"><p>Chat Section</p></Link>}
+             
           </ul>
+         
         </nav>
 
 

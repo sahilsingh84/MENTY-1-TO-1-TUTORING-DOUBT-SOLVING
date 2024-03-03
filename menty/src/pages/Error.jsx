@@ -4,7 +4,7 @@ import React from 'react'
 const Error = () => {
   return (
 
-    <div className='text-3xl text-white mx-auto my-auto'> Error - 404 Not found   </div>
+    <div className='text-3xl text-black mt-[80px] mx-auto my-auto customBoxShadow'> Error - 404 Not found   </div>
      
 )}
 

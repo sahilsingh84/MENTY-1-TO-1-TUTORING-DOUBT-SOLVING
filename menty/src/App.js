@@ -31,7 +31,8 @@ import LiveStream from './pages/LiveStream'
 import { useSelector } from 'react-redux'
 import NotificationPage from './pages/NotificationPage';
 
-
+import Error from "./pages/Error";
+import ChatSection from './components/core/ChatSection/ChatSection'
 
 // socket
 const App = () => {
@@ -49,38 +50,17 @@ const App = () => {
           <Route path="/update-password/:id" element = { <OpenRoute> <UpdatePassword /> </OpenRoute> } />
           <Route path="about" element = {  <About /> } />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/attend-question/:id" element={<AttendQuestionPage />} />
-          <Route path="/live-stream/:id" element={<LiveStream/>} />
-          {/* <Route path="/contact" element={<Contact />} /> */}
-           {/* 
-            <Route path="verify-email" element = { <OpenRoute> <VerifyEmail /> </OpenRoute> } />
-          <Route path="/contact" element={<Contact />} /> */}
-          {/* <Route path="forgot-password" element = { <OpenRoute> <ForgotPassword /> </OpenRoute> } /> */}
           <Route path="/verify-email" element = { <OpenRoute> <VerifyEmail /> </OpenRoute> } />
-          {/* <Route path="update-password/:id" element = { <OpenRoute> <UpdatePassword /> </OpenRoute> } /> */}
-          {/* <Route path="about" element = { <OpenRoute> <About /> </OpenRoute> } /> */}
-          {/* <Route path="/contact" element={<Contact />} /> */}
-
-          {/* =============================== */}
-          <Route path="/notification" element={<NotificationPage/>} />
           <Route element = {<PrivateRoute> <Dashboard /> </PrivateRoute>} >
-
               <Route path="dashboard/my-profile" element={ < MyProfile />} /> 
               <Route path="dashboard/Settings" element={<Settings />} /> 
-
-                
-                {/* { user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
-                                        <>
-                                            <Route path="dashboard/instructor" element={<Instructor />} />
-                                            <Route path="dashboard/add-course" element={<AddCourse />} />
-                                            <Route path="dashboard/edit-course/:courseId" element={<EditCourse />} />
-                                            <Route path="dashboard/my-courses" element={<MyCourses />} />    
-                                        </>
-                                  )
-                    } */}
-
           </Route>
-          <Route path="/askdoubt" element={<AskDoubt></AskDoubt>}></Route>
+          {user?.role==="Student" && <Route path="/askdoubt" element={<PrivateRoute> <AskDoubt></AskDoubt></PrivateRoute>}></Route>}
+          {user?.role==="Instructor" && <Route path="/notification" element={<PrivateRoute> <NotificationPage/></PrivateRoute>}></Route>}
+          {user?.role==="Instructor" && <Route path="/attend-question/:id" element={<PrivateRoute> <AttendQuestionPage /></PrivateRoute>}></Route>}
+          <Route path="/live-stream/:id" element={<PrivateRoute><LiveStream/></PrivateRoute>} />
+          <Route path="/chat-section" element={<PrivateRoute><ChatSection/></PrivateRoute>}></Route>
+          <Route path="*" element={<Error/>}></Route>
       </Routes>
     </div>
   )

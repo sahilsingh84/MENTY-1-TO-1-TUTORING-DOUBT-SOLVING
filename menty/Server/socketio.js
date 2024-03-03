@@ -1,7 +1,8 @@
 // socket.js
 
 const { Server } = require('socket.io');
-
+const chatModel=require("./models/Model");
+const roomModel=require("./models/ModelCreateRoom");
 let io; // Variable to store the io object
 const socketIO = require('./')
 function initSocket(server) {
