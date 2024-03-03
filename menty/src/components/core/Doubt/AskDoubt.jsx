@@ -12,8 +12,7 @@ function AskDoubt(){
    const [imageFile, setImageFile] = useState(null);
    const [description,setDescription]=useState("");
   const [previewSource, setPreviewSource] = useState(null);
-
-  const {setNotification}=useContext(AppContext);
+  const {notification,setNotification}=useContext(AppContext);
   const userId=user._id;
 
   function navigation(){
@@ -24,9 +23,9 @@ function AskDoubt(){
   
 
   const [alert,setAlert]=useState(false);
-  // useEffect(()=>{
-  //  console.log(notification);
-  // },[notification]);
+  useEffect(()=>{
+   console.log(notification);
+  },[notification]);
   useMemo(()=>{socket.emit("join-room",user._id);
 console.log("room joined",user._id)},[]);
 useEffect(()=>{
