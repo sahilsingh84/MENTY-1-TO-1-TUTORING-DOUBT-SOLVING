@@ -11,7 +11,7 @@ const studentSchema=new mongoose.Schema({
     },
     field:{
         type:String,
-        enum:["School Student","Dropper","College Student"]
+        enum:["School Student"]
     }
 })
 

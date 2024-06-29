@@ -21,18 +21,18 @@ function Navbar() {
   const [subLinks, setSubLinks] = useState([])
   const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    ;(async () => {
-      setLoading(true)
-      try {
-        const res = await apiConnector("GET", categories.CATEGORIES_API)
-        setSubLinks(res.data.data)
-      } catch(error) {
-        console.log("Could not fetch Categories.", error)
-      }
-      setLoading(false)
-    })()
-  }, [])
+  // useEffect(() => {
+  //   ;(async () => {
+  //     setLoading(true)
+  //     try {
+  //       const res = await apiConnector("GET", categories.CATEGORIES_API)
+  //       setSubLinks(res.data.data)
+  //     } catch(error) {
+  //       console.log("Could not fetch Categories.", error)
+  //     }
+  //     setLoading(false)
+  //   })()
+  // }, [])
 
   function matchRoute(route){                                   // if route is matched with (current route) then return true and color of text turn yellow otherwise white;
     return matchPath({ path: route } , location.pathname)

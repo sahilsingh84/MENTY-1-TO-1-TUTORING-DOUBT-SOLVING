@@ -13,7 +13,7 @@ const mailSender=async (email,title,body)=>{
             }
         )
         const info = await transporter.sendMail({
-            from:"StudyNotion",
+            from:"Menty One-to-One Doubt Solving",
             to:`${email}`,
             subject:`${title}`,
             html:`${body}`
